@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
+		<title>Max Cars</title>
+		<style>
+			.car { 
+				position:absolute;
+				left: 50px;
+				top: 100px;
+				width: 60px;
+				text-align: center;
+				background-color: lightblue;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Max Cars: </h1>
+		<div id="app">
+		<div class="road">  {{ message }}
+			<div class="car" id="car1" >[CAR1></div>
+			<div class="car" style="left: 150px">[CAR2></div>
+			<div class="car" style="left: 250px" v-bind:style="{ left: car3left + 'px' }">[CAR3></div>
+		</div>
+		</div>	
+		
+		<script lang="JavaScript">
+		var app = new Vue({
+  			el: '#app',
+			  data: {
+				message: 'RoadVue!',
+				car3left: 300
+			  }
+		})
+		
+		function tick() {
+  			app.car3left = app.car3left + 1;	
+		}
+
+		var timerId = setInterval(tick, 50);
+
+		// через 5 сек остановить повторы
+		setTimeout(function() {
+		  clearInterval(timerId);
+		}, 10000);
+		
+	
+		</script>
+	</body>
+</html>
